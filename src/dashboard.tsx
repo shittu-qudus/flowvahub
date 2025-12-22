@@ -46,7 +46,7 @@ export default function Dashboard() {
                 <div className="p-4 md:p-6">
                     <div className='sticky top-0 z-50 '>
 
-                        <RewardsHubHeader />
+                        <RewardsHubHeader isOpen={sidebarOpen} toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
                     </div>
                     <div>
                         <RewardsHub />

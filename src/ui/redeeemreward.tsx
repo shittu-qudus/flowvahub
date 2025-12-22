@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Home, Compass, BookOpen, Layers, CreditCard, Gift, Settings, Menu, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Home, Compass, BookOpen, Layers, CreditCard, Gift, Settings } from 'lucide-react';
 import FlowvaSidebar from '../sidebar';
 import RewardsHubHeader from './header';
 
 export default function RedeemReward() {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState('all');
+    const [activeTab, setActiveTab] = useState('redeem');
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -81,6 +81,7 @@ export default function RedeemReward() {
     ];
 
     const filteredRewards = rewards.filter(reward => {
+        if (activeTab === 'redeem') return true;
         if (activeTab === 'all') return true;
         if (activeTab === 'unlocked') return reward.category === 'unlocked';
         if (activeTab === 'locked') return reward.category === 'locked';
@@ -95,16 +96,17 @@ export default function RedeemReward() {
 
     return (
         <div className="flex min-h-screen bg-gray-50">
-            <div className=''>
+            {/* Desktop Sidebar - Fixed */}
+            <div className='hidden lg:block fixed left-0 top-0 h-screen z-50'>
                 <FlowvaSidebar />
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 lg:mt-0 mt-16">
-                <div className='sticky top-0 z-50'>
-                    <RewardsHubHeader />
+            <div className="flex-1 lg:ml-64 lg:mr-8">
+                <div className='sticky top-0 z-50 bg-white lg:ml-8'>
+                    <RewardsHubHeader isOpen={isOpen} toggleSidebar={toggleSidebar} />
                 </div>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pl-16 py-8">
                     <div className="flex gap-8 mb-8 border-b-2 border-gray-200">
 
                         <button
