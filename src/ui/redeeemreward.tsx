@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Home, Compass, BookOpen, Layers, CreditCard, Gift, Settings } from 'lucide-react';
 import FlowvaSidebar from '../sidebar';
 import RewardsHubHeader from './header';
-
+import { useNavigate } from 'react-router-dom';
 export default function RedeemReward() {
+
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('redeem');
 
@@ -23,14 +25,14 @@ export default function RedeemReward() {
 
     const rewards = [
         {
-            icon: '🏦',
+            icon: '💸',
             title: '$5 Bank Transfer',
             description: 'The $5 equivalent will be transferred to your bank account',
             points: 5000,
             category: 'unlocked'
         },
         {
-            icon: '💳',
+            icon: '💸',
             title: '$5 PayPal International',
             description: 'Receive a $5 Paypal balance transfer directly to your PayPal account email',
             points: 6000,
@@ -96,19 +98,19 @@ export default function RedeemReward() {
 
     return (
         <div className="flex min-h-screen bg-gray-50">
-            {/* Desktop Sidebar - Fixed */}
-            <div className='hidden lg:block fixed left-0 top-0 h-screen z-50'>
+            {/* Desktop Sidebar - Fixed Position */}
+            <div className="hidden lg:block fixed left-0 top-0 h-screen z-40">
                 <FlowvaSidebar />
             </div>
 
-            {/* Main Content */}
-            <div className="flex-1 lg:ml-64 lg:mr-8">
-                <div className='sticky top-0 z-50 bg-white lg:ml-8'>
+            {/* Main Content - Offset for fixed sidebar */}
+            <div className="flex-1 lg:ml-64">
+                <div className="sticky top-0 z-30 bg-white">
                     <RewardsHubHeader isOpen={isOpen} toggleSidebar={toggleSidebar} />
                 </div>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pl-16 py-8">
-                    <div className="flex gap-8 mb-8 border-b-2 border-gray-200">
 
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <div className="flex gap-8 mb-8 border-b-2 border-gray-200">
                         <button
                             onClick={() => setActiveTab('earn')}
                             className={`pb-3 px-1 font-semibold text-lg transition-colors relative ${activeTab === 'earn'
@@ -116,7 +118,7 @@ export default function RedeemReward() {
                                 : 'text-gray-600 hover:text-gray-800'
                                 }`}
                         >
-                            <a href="/dashboard">Earn Points</a>
+                            <a href="" onClick={() => navigate('/dashboard')}>Earn Points</a>
                             {activeTab === 'earn' && (
                                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600"></div>
                             )}
@@ -192,7 +194,7 @@ export default function RedeemReward() {
                     </div>
 
                     {/* Rewards Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredRewards.map((reward, index) => (
                             <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
                                 <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4">
@@ -202,7 +204,7 @@ export default function RedeemReward() {
                                 <p className="text-sm text-gray-600 mb-4 flex-1">{reward.description}</p>
                                 <div className="flex items-center justify-between mb-3">
                                     <span className="text-purple-600 font-semibold text-sm">
-                                        {reward.points > 0 ? `${reward.points} pts` : '0 pts'}
+                                        {reward.points > 0 ? ` ⭐️${reward.points} pts` : '0 pts'}
                                     </span>
                                 </div>
                                 <button

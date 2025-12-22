@@ -1,5 +1,5 @@
 import { supabase } from '../lib/supabase';
-import { Profile } from '../types/supabase';
+import type { Profile } from '../types/supabase';
 
 // User profile operations
 export class UserService {

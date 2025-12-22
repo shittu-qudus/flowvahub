@@ -1,12 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Home, Compass, BookOpen, Layers, CreditCard, Gift, Settings, Menu, X } from 'lucide-react';
+import { SupabaseService } from './lib/supabase';
 
 interface FlowvaSidebarProps {
     isOpen?: boolean;
     toggleSidebar?: () => void;
 }
 
+interface UserProfile {
+    email: string;
+    username: string;
+}
+
 export default function FlowvaSidebar({ isOpen = false, toggleSidebar }: FlowvaSidebarProps) {
+    const [userProfile, setUserProfile] = useState<UserProfile>({
+        email: 'mojev86560@nctime.c...',
+        username: 'Unknown'
+    });
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                const { data, error } = await SupabaseService.getSession();
+
+                if (!error && data.session?.user) {
+                    const user = data.session.user;
+                    const email = user.email || 'mojev86560@nctime.c...';
+
+                    // Generate username from email prefix + 3 random digits
+                    const emailPrefix = email.split('@')[0];
+                    const randomNum = Math.floor(Math.random() * 900) + 100;
+                    const username = `${emailPrefix}${randomNum}`;
+
+                    setUserProfile({
+                        email,
+                        username
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+            }
+        };
+
+        fetchUserProfile();
+    }, []);
+
     const navigationItems = [
         { icon: Home, label: 'Home' },
         { icon: Compass, label: 'Discover' },
@@ -28,11 +66,11 @@ export default function FlowvaSidebar({ isOpen = false, toggleSidebar }: FlowvaS
         <>
             {/* Sidebar Content */}
             <div className="min-h-screen bg-white">
-                <div className="w-full max-w-sm bg-white shadow-lg p-6 flex flex-col h-screen">
+                <div className="w-full max-w-sm bg-red shadow-lg p-6 flex flex-col h-screen">
                     {/* Header with Close Button */}
                     <div className="mb-8 flex items-center justify-between gap-3">
                         <img
-                            src="/flowvalogo.jpg"
+                            src="/flowvalogo.png"
                             alt="Flowva Logo"
                             height={120}
                             width={120}
@@ -73,11 +111,13 @@ export default function FlowvaSidebar({ isOpen = false, toggleSidebar }: FlowvaS
 
                     <div className="flex items-center gap-3 px-2 py-2">
                         <div className="w-12 h-12 bg-purple-300 rounded-full flex items-center justify-center">
-                            <span className="text-purple-700 text-xl font-semibold">U</span>
+                            <span className="text-purple-700 text-xl font-semibold">
+                                {userProfile.username.charAt(0).toUpperCase()}
+                            </span>
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-gray-900 font-semibold text-base">Unknown</p>
-                            <p className="text-gray-500 text-sm truncate">mojev86560@nctime.c...</p>
+                            <p className="text-gray-900 font-semibold text-base">{userProfile.username}</p>
+                            <p className="text-gray-500 text-sm truncate">{userProfile.email}</p>
                         </div>
                     </div>
                 </div>

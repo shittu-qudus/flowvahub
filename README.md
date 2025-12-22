@@ -21,7 +21,7 @@ Live product reference:
 
 ---
 
-## Tech Stack
+## 🧱 Tech Stack
 
 ### Frontend
 
@@ -79,6 +79,8 @@ src/
   * Sign up
   * Sign in
   * Forgot password
+  * Email confirmation
+* **Google SMTP** is configured and used for email confirmation and auth-related emails
 * Protected routes are enforced using an `AuthGuard` component
 
 ---
@@ -95,21 +97,43 @@ src/
 
 ---
 
-##  UI & UX
+## 🎨 UI & UX
 
 * Layout and spacing closely match the FlowvaHub Rewards page
 * Fully responsive design
 * Modular UI components for scalability
 * Clean separation between UI and business logic
+* Naming consistency reviewed and maintained across components (e.g. `dashmain`, `dashmaintwo`)
 
 ---
 
-##  Setup Instructions
+## 🖼️ Screenshots
 
-### 1️ Clone the repository
+Below are sample screenshots showcasing the recreated Rewards page across key states.
+
+```
+[ Screen 1 ]   [ Screen 2 ]
+
+[ Screen 3 ]   [ Screen 4 ]
+```
+
+(Screens are arranged in a 4-grid layout for clarity.)
+
+---
+
+## 🚀 Live Deployment
+
+* Deployed using **Vercel**
+* Live URL: **<https://flowvahub.vercel.app/>**
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/shittu-qudus/flowvahub.git>
 cd flowvahub
 ```
 
@@ -136,7 +160,7 @@ npm run dev
 
 ---
 
-## What This Project Demonstrates
+## ✅ What This Project Demonstrates
 
 * Strong React fundamentals
 * Clean component and folder architecture
@@ -146,14 +170,14 @@ npm run dev
 
 ---
 
-##  Notes
+## 📌 Notes
 
 * Backend logic is intentionally handled **only via Supabase**, as required
 * The focus is on correctness, structure, and maintainability rather than over-engineering
 
 ---
 
-##  Author
+## 👤 Author
 
 **Shittu Qudus Adekunle**
 Frontend Engineer (React / TypeScript / Supabase)
@@ -161,4 +185,5 @@ Frontend Engineer (React / TypeScript / Supabase)
 ---
 
 Thank you for reviewing this assessment. I look forward to discussing the implementation and decisions made in this project.
-# flowvahub
+
+## FLOWVAHUB 
