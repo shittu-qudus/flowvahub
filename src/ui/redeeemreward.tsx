@@ -3,8 +3,8 @@ import { Home, Compass, BookOpen, Layers, CreditCard, Gift, Settings } from 'luc
 import FlowvaSidebar from '../sidebar';
 import RewardsHubHeader from './header';
 import { useNavigate } from 'react-router-dom';
-export default function RedeemReward() {
 
+export default function RedeemReward() {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('redeem');
@@ -99,12 +99,12 @@ export default function RedeemReward() {
     return (
         <div className="flex min-h-screen bg-gray-50">
             {/* Desktop Sidebar - Fixed Position */}
-            <div className="hidden lg:block fixed left-0 top-0 h-screen z-40">
+            <div className="hidden lg:block fixed left-0 top-0 h-screen z-40 w-64">
                 <FlowvaSidebar />
             </div>
 
             {/* Main Content - Offset for fixed sidebar */}
-            <div className="flex-1 lg:ml-64">
+            <div className="flex-1 w-full lg:pl-64">
                 <div className="sticky top-0 z-30 bg-white">
                     <RewardsHubHeader isOpen={isOpen} toggleSidebar={toggleSidebar} />
                 </div>

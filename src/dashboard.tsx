@@ -8,7 +8,7 @@ export default function Dashboard() {
 
     return (
         <div className="h-screen bg-gray-0">
-            <div className="h-full grid grid-cols-1 md:grid-cols-[260px_1fr]">
+            <div className="h-full grid grid-cols-1 lg:grid-cols-[260px_1fr]">
                 {/* Sidebar (Desktop) */}
                 <div className='hidden lg:block h-full'>
                     <FlowvaSidebar />
@@ -26,7 +26,6 @@ export default function Dashboard() {
                         </div>
                         <div>
                             <RewardsHub />
-
                         </div>
                     </div>
                 </div>

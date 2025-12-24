@@ -1,9 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Star, Share2, Users, Copy } from 'lucide-react';
+import { SupabaseService } from '../lib/supabase';
+interface UserProfile {
+  email: string;
+  username: string;
+}
 
-export default function EarnMorePointsSection() {
-  const [referralLink] = useState('https://app.flowvahub.com/signup?ref=unkno3567');
+export default function MorePointsSection() {
+  const [userProfile, setUserProfile] = useState<UserProfile>({
+    email: 'mojev86560@nctime.c...',
+    username: 'Unknown'
+  });
+  const [referralLink, setReferralLink] = useState('https://app.flowvahub.com/signup?ref=unkno3567');
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const { data, error } = await SupabaseService.getSession();
+
+        if (!error && data.session?.user) {
+          const user = data.session.user;
+          const email = user.email || 'mojev86560@nctime.c...';
+          const emailPrefix = email.split('@')[0];
+          const randomNum = Math.floor(Math.random() * 900) + 100;
+          const username = `${emailPrefix}${randomNum}`;
+
+          setUserProfile({
+            email,
+            username
+          });
+
+          setReferralLink(`https://app.flowvahub.com/signup?ref=${username}`);
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(referralLink);

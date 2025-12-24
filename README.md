@@ -1,17 +1,17 @@
 # FLOWVAHUB – Rewards Page (React + Supabase)
 
-## 📌 Project Overview
+##  Project Overview
 
 This project is a **technical assessment** for the **React Full-Stack Developer role** at **FlowvaHub**.
 
 The task was to **recreate the Rewards page** of the FlowvaHub platform with **pixel-accurate UI**, **working business logic**, and **real Supabase integration** for authentication and data handling.
 
 Live product reference:
-👉 [https://www.flowvahub.com](https://www.flowvahub.com)
+ [https://www.flowvahub.com](https://www.flowvahub.com)
 
 ---
 
-## 🎯 Objectives
+## Objectives
 
 * Recreate the Rewards page UI as closely as possible
 * Implement real authentication using Supabase
@@ -21,13 +21,15 @@ Live product reference:
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 ### Frontend
 
 * **React** (TypeScript)
 * **Tailwind CSS** for styling
 * **React Router** for routing
+- **Formik** for form state management
+- **Yup** for schema-based form validation
 
 ### Backend / Database
 
@@ -39,7 +41,7 @@ Live product reference:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 src/
@@ -71,7 +73,7 @@ src/
 
 ---
 
-## 🔐 Authentication
+##  Authentication
 
 * Authentication is handled **directly via Supabase Auth**
 * Supports:
@@ -85,50 +87,49 @@ src/
 
 ---
 
-## 🗄️ Database & Data Handling
+## Database & Data Handling
 
-* Rewards data is stored and fetched from **Supabase tables**
-* Queries are abstracted into service layers for clarity
-* Proper handling of:
-
-  * Loading states
-  * Empty states (no rewards available)
-  * Error states (network / auth / query failures)
-
----
-
-## 🎨 UI & UX
-
-* Layout and spacing closely match the FlowvaHub Rewards page
-* Fully responsive design
-* Modular UI components for scalability
-* Clean separation between UI and business logic
-* Naming consistency reviewed and maintained across components (e.g. `dashmain`, `dashmaintwo`)
+- Rewards data is stored and fetched from **Supabase tables**
+- Queries are abstracted into service layers for clarity and maintainability
+- Proper handling of:
+  - Loading states
+  - Empty states (no rewards available)
+  - Error states (network, authentication, and database errors)
+- Meaningful error feedback is surfaced in the UI to improve user experience
 
 ---
 
-## 🖼️ Screenshots
+## UI & UX
 
-Below are sample screenshots showcasing the recreated Rewards page across key states.
-
-```
-[ Screen 1 ]   [ Screen 2 ]
-
-[ Screen 3 ]   [ Screen 4 ]
-```
-
-(Screens are arranged in a 4-grid layout for clarity.)
+- Layout and spacing closely match the FlowvaHub Rewards page
+- Fully responsive design
+- Modular UI components for scalability
+- Clean separation between UI and business logic
+- Naming consistency reviewed and maintained across components  
+  (e.g. `dashmain`, `dashmaintwo`)
+- Clear inline validation and error messaging for better usability
 
 ---
 
-## 🚀 Live Deployment
+##  Screenshots
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+  <img src="./public/mobile.png" alt="Screenshot 1" />
+  <img src="./public/redeem.png" alt="Screenshot 2" />
+  <img src="./public/redeem.png" alt="Screenshot 3" />
+  <img src="./public/signin.png" alt="Screenshot 4" />
+</div>
+
+---
+
+## Live Deployment
 
 * Deployed using **Vercel**
 * Live URL: **<https://flowvahub.vercel.app/>**
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### 1️⃣ Clone the repository
 
@@ -160,7 +161,7 @@ npm run dev
 
 ---
 
-## ✅ What This Project Demonstrates
+##  What This Project Demonstrates
 
 * Strong React fundamentals
 * Clean component and folder architecture
@@ -170,14 +171,14 @@ npm run dev
 
 ---
 
-## 📌 Notes
+##  Notes
 
 * Backend logic is intentionally handled **only via Supabase**, as required
 * The focus is on correctness, structure, and maintainability rather than over-engineering
 
 ---
 
-## 👤 Author
+## Author
 
 **Shittu Qudus Adekunle**
 Frontend Engineer (React / TypeScript / Supabase)
