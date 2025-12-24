@@ -8,7 +8,7 @@ interface RewardsHubHeaderProps {
 }
 
 export default function RewardsHubHeader({ isOpen, toggleSidebar }: RewardsHubHeaderProps) {
-    const notificationCount = 3;
+    const notificationCount = 1;
 
     return (
         <>
